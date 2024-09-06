@@ -55,14 +55,44 @@ def test_count_vowels():
 def merge_lists(list1: list, list2: list) -> list:
     """
     Merge two sorted lists into a single sorted list.
-
     Parameters:
     - list1 (list): The first sorted list
     - list2 (list): The second sorted list
-
     Returns:
     - list: A new sorted list containing all elements from list1 and list2
     """
+    #for loop
+    merged_list = []
+    how_many_times = len(list1) + len(list2)
+    index1 = 0
+    index2 = 0
+    index_list = range(0,how_many_times)
+    for index in index_list:
+
+        if index1 == len(list1) or index2 == len(list2):
+            if index1 == len(list1):
+                #we have no more numbers to add to merged list from index 1
+                #add the remaining numbers from list2 to the merged list
+                while index2 < len(list2):
+                    merged_list.append(list2[index2])
+                index2 += 1
+                return merged_list
+            else: 
+                while index1 < len(list1):
+                    merged_list.append(list1[index1])
+                index1 += 1
+                return merged_list
+        if list1[index1] > list2[index2]:
+            merged_list.append(list2[index2])
+            index2 += 1
+        else:
+            merged_list.append(list1[index1])
+            index1 += 1
+            
+    return merged_list
+
+    #check boths lists for what 
+
     # TODO: Implement this function
     pass
 
@@ -150,8 +180,23 @@ def intersection(list1: list, list2: list) -> list:
     Returns:
     - list: The intersection of the two lists
     """
+    #0. create an intersection list
+    intersection_list: list = []
+    #1. select a list, preferbaly first list 
+    #2. take that list and iterate it 
+    for number in list1:
+        #is number in list 2
+        #3. check to see what items matches in each list
+        if number in list2:
+                #4. take those numbers that do match and move into a new intersection list
+            intersection_list.append(number)
+    #4.5. remove any duplicates, how?
+        intersection_list = list(set(intersection_list))
+    #5. return the intersection list
+    return intersection_list
+
     # TODO: Implement this function
-    pass
+
 
 
 # Unit Tests for intersection
