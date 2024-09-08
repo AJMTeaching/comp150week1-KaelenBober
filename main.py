@@ -1,12 +1,31 @@
-# ------------------------------------------------------------------------
-
+ # ------------------------------------------------------------------------
 # Lab 1
 # Problem 1
-# Put your solution here, make sure I can run it by running this file. Do not submit it commented out.
+#Create a list called my_list with the values [1, 5, 'apple', 20.5].
+my_list = [1, 5, 'apple', 20.5]
+# Using indexing, print the value 'apple' from my_list.
+print(my_list[2])
+# Add the value 10 to the end of my_list using the append() method. Print the updated list.
+print(my_list.append(10))
+# Remove the value 20.5 from my_list using the remove() method. Print the updated list.
+print(my_list.remove(20.5))
+# Reverse the order of the elements in my_list using a method. Print the reversed list.
+print(my_list.reverse())
 
-# Problem 2
-# Put your solution here, make sure I can run it by running this file. Do not submit it commented out.
-
+#Problem 2 
+# Create a dictionary called person with keys 'name', 'age', 'job' and values 'John', 30, 'teacher'.
+person = {'name':'John' , 'age':30 , 'job':'teacher'}
+# Print the value corresponding to the 'job' key.
+print(person["job"])
+# Add a new key-value pair: 'city': 'Paris' to the person dictionary. Print the updated dictionary.
+person["city"] = 'Paris'
+print(person)
+# Remove the 'age' key-value pair from person. Print the updated dictionary.
+del person["age"]
+print(person)
+# Iterate through the person dictionary and print out each key-value pair on a separate line.
+for key, value in person.items():
+    print(f"{key}, {value}")
 # -----------------------------------------------------------------------------
 
 
