@@ -6,9 +6,11 @@ my_list = [1, 5, 'apple', 20.5]
 # Using indexing, print the value 'apple' from my_list.
 print(my_list[2])
 # Add the value 10 to the end of my_list using the append() method. Print the updated list.
-print(my_list.append(10))
+my_list.append(10)
+print(my_list)
 # Remove the value 20.5 from my_list using the remove() method. Print the updated list.
-print(my_list.remove(20.5))
+my_list.remove(20.5)
+print(my_list)
 # Reverse the order of the elements in my_list using a method. Print the reversed list.
 print(my_list.reverse())
 
@@ -42,7 +44,7 @@ def test(did_pass):
 
 
 # Function 1: count_vowels
-def count_vowels(s: str) -> int:
+def count_vowels(words: str) -> int:
     """
     Count the number of vowels in a string.
 
@@ -52,8 +54,18 @@ def count_vowels(s: str) -> int:
     Returns:
     - int: The number of vowels in the string
     """
+    #1. determine what are vowels 
+    vowels = 'aeiouAEIOU'
+    #2.make a list for the counted vowels
+    vowels_in_word = 0
+    #3. take a word, and look for vowels in that word 
+    for characters in words:
+    #4. take the amount of vowels in that word
+        if characters in vowels:
+            vowels_in_word += 1 
+    #5. return that number of vowels 
+    return vowels_in_word
     # TODO: Implement this function
-    pass
 
 
 # Unit Tests for count_vowels
@@ -72,48 +84,38 @@ def test_count_vowels():
 
 # Function 2: merge_lists
 def merge_lists(list1: list, list2: list) -> list:
-    """
-    Merge two sorted lists into a single sorted list.
-    Parameters:
-    - list1 (list): The first sorted list
-    - list2 (list): The second sorted list
-    Returns:
-    - list: A new sorted list containing all elements from list1 and list2
-    """
-    #for loop
+
+    #while loop
     merged_list = []
     how_many_times = len(list1) + len(list2)
     index1 = 0
     index2 = 0
     index_list = range(0,how_many_times)
-    for index in index_list:
-
-        if index1 == len(list1) or index2 == len(list2):
-            if index1 == len(list1):
-                #we have no more numbers to add to merged list from index 1
-                #add the remaining numbers from list2 to the merged list
-                while index2 < len(list2):
-                    merged_list.append(list2[index2])
-                index2 += 1
-                return merged_list
-            else: 
-                while index1 < len(list1):
-                    merged_list.append(list1[index1])
+    while len(merged_list) != index_list:
+        if list1 == []:
+            return add_remaining_items_to_merged_list(index2, list2, merged_list)
+        if list2 == []:
+            return add_remaining_items_to_merged_list(index1, list1, merged_list)
+        if list1(index1) < list2(index2):
+            merged_list.append(list1(index1))
+            if index1+1 == len(list1):
+                return add_remaining_items_to_merged_list(index2, list2, merged_list)
+            else:
                 index1 += 1
-                return merged_list
-        if list1[index1] > list2[index2]:
-            merged_list.append(list2[index2])
-            index2 += 1
         else:
-            merged_list.append(list1[index1])
-            index1 += 1
-            
+            merged_list.append(list2(index2))
+            if index2+1 == len(list2):
+                return add_remaining_items_to_merged_list(index1, list1, merged_list)
+            else:
+               index2 += 1
+    
     return merged_list
 
     #check boths lists for what 
 
     # TODO: Implement this function
     pass
+    
 
 
 # Unit Tests for merge_lists
@@ -143,6 +145,7 @@ def word_lengths(words: list) -> list:
     Returns:
     - list: A list containing the lengths of the words
     """
+
     # TODO: Implement this function
     pass
 
