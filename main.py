@@ -44,7 +44,7 @@ def test(did_pass):
 
 
 # Function 1: count_vowels
-def count_vowels(words: str) -> int:
+def count_vowels(s: str) -> int:
     """
     Count the number of vowels in a string.
 
@@ -55,11 +55,11 @@ def count_vowels(words: str) -> int:
     - int: The number of vowels in the string
     """
     #1. determine what are vowels 
-    vowels = 'aeiouAEIOU'
+    vowels = ['a','e','i','o','u','A','E','I','O','U']
     #2.make a list for the counted vowels
     vowels_in_word = 0
     #3. take a word, and look for vowels in that word 
-    for characters in words:
+    for characters in s:
     #4. take the amount of vowels in that word
         if characters in vowels:
             vowels_in_word += 1 
@@ -83,38 +83,42 @@ def test_count_vowels():
 
 
 # Function 2: merge_lists
+def extend_list(list_to_extend_into, list_to_append_items_from):
+    for item in list_to_append_items_from:
+        list_to_extend_into.append(item)
+    return list_to_extend_into
 def merge_lists(list1: list, list2: list) -> list:
-
     #while loop
+    #if we were to increment i1, would it be a larger index than the index of the value with the larges index in list1
+    #add the rest of list 2 to the merged list
+    #because list2 is already in orde, and weve finished adding all the values in list1
+    if not list1:
+        return list2
+    if not list2:
+        return list1
     merged_list = []
-    how_many_times = len(list1) + len(list2)
-    index1 = 0
-    index2 = 0
-    index_list = range(0,how_many_times)
-    while len(merged_list) != index_list:
-        if list1 == []:
-            return add_remaining_items_to_merged_list(index2, list2, merged_list)
-        if list2 == []:
-            return add_remaining_items_to_merged_list(index1, list1, merged_list)
-        if list1(index1) < list2(index2):
-            merged_list.append(list1(index1))
-            if index1+1 == len(list1):
-                return add_remaining_items_to_merged_list(index2, list2, merged_list)
+    i1, i2 = 0, 0
+    while len(merged_list) < len(list1) + len(list2):
+        if list1[i1] < list2[i2]:
+            merged_list.append(list1[i1])
+            if i1 + 1 == len(list1):
+                for item in list2[i2:]:
+                    merged_list.append(item)
             else:
-                index1 += 1
+                i1 += 1
         else:
-            merged_list.append(list2(index2))
-            if index2+1 == len(list2):
-                return add_remaining_items_to_merged_list(index1, list1, merged_list)
+            merged_list.append(list2[i2])
+            if i2 + 1 == len(list2):
+                for item in list1[i1:]:
+                    merged_list.append(item)
             else:
-               index2 += 1
-    
+                i2 += 1
     return merged_list
 
+    
     #check boths lists for what 
 
     # TODO: Implement this function
-    pass
     
 
 
@@ -146,8 +150,15 @@ def word_lengths(words: list) -> list:
     - list: A list containing the lengths of the words
     """
 
+    #1. make a list for the amount of letters in a word 
+    letters_in_word = []
+    #2. make a loop to find number of letters in word
+    for letters in words:
+        letters_in_word.append(len(letters))
+    #3. return that number 
+    return letters_in_word
     # TODO: Implement this function
-    pass
+    
 
 
 # Unit Tests for word_lengths
@@ -157,7 +168,7 @@ def test_word_lengths():
     test(lengths == [5, 5, 6])
     test(word_lengths([]) == [])
     test(word_lengths(["word"]) == [4])
-    test(word_lengths(["short", "mediummm", "longesttttt"]) == [5, 8, 10])
+    test(word_lengths(["short", "mediummm", "longesttttt"]) == [5, 8, 11])
     test(word_lengths(["", "a", "ab", "abc"]) == [0, 1, 2, 3])
     test(word_lengths(["  ", "a b", " c "]) == [2, 3, 3])
 
@@ -173,6 +184,15 @@ def reverse_string(s: str) -> str:
     Returns:
     - str: The reversed string
     """
+    list_s = []
+    for characters in s:
+        list_s.append(characters)
+        final_index = len(list_s)-1
+    reversed_list_s = [0]*len(list_s)
+    for character in list_s:
+        reversed_list_s[final_index] = character
+        final_index -= 1
+    return "".join(reversed_list_s)
     # TODO: Implement this function
     pass
 
