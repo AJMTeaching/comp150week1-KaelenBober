@@ -6,9 +6,11 @@ my_list = [1, 5, 'apple', 20.5]
 # Using indexing, print the value 'apple' from my_list.
 print(my_list[2])
 # Add the value 10 to the end of my_list using the append() method. Print the updated list.
-print(my_list.append(10))
+my_list.append(10)
+print(my_list)
 # Remove the value 20.5 from my_list using the remove() method. Print the updated list.
-print(my_list.remove(20.5))
+my_list.remove(20.5)
+print(my_list)
 # Reverse the order of the elements in my_list using a method. Print the reversed list.
 print(my_list.reverse())
 
